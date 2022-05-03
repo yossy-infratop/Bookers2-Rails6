@@ -1,0 +1,14 @@
+<!-- 投稿用-->
+<%= form_with model: book, local:true do |f| %>
+  <div class="form-group">
+    <%= f.label :book_title, "Title" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :book_opinion, "Opinion" %>
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-success" %>
+  </div>
+<% end %>
