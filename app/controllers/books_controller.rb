@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :check_book_user, only: [:edit, :update, :destroy]
 
   def index
     @books = Book.all
@@ -16,8 +17,8 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to book_path(@book.id), notice: "You have created book successfully"
     else
-      @user = current_user
       @books = Book.all
+      @new_book = @book
       render :index
     end
   end
@@ -45,6 +46,11 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :body)
+  end
+
+  def check_book_user
+    @book = Book.find(params[:id])
+    redirect_to books_path unless @book.user == current_user
   end
 
 end

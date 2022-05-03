@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_user, only: [:edit, :update]
 
   def index
     @users = User.all
@@ -28,6 +29,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
+  end
+
+   def check_user
+    @user = User.find(params[:id])
+    redirect_to user_path(current_user) unless @user == current_user
   end
 
 end
