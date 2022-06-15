@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :ensure_user, only: [:show, :edit, :update]
+  before_action :ensure_user, only: [:show, :edit, :update, :search]
   before_action :check_user, only: [:edit, :update]
 
   def index
@@ -20,6 +20,15 @@ class UsersController < ApplicationController
       redirect_to user_path(@user.id), notice: "You have updated user successfully"
     else
       render :edit
+    end
+  end
+
+  def search
+    @books = @user.books
+    if params[:created_at]
+      @search_book = @books.where('created_at LIKE ? ', "#{params[:created_at]}%").count
+    else
+      @search_book = "日付を選択してください"
     end
   end
 
