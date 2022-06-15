@@ -12,6 +12,21 @@
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
       <%= render 'books/index', books: @books %>
+
+      <h2>7日分の投稿数</h2>
+      <table class="table table-bordered">
+        <thead>
+          <% (0..6).reverse_each do |num| %>
+            <th><%= @days[num] %></th>
+          <% end %>
+        </thead>
+        <tbody>
+          <% (0..6).reverse_each do |num| %>
+            <td><%= @book_count[num] %></td>
+          <% end %>
+        </tbody>
+      </table>
+      <%= render 'books/chart', days: @days, book_count: @book_count %>
     </div>
   </div>
 </div>
