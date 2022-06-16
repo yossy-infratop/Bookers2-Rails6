@@ -13,7 +13,6 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @users = @group.group_user.users
     @book = Book.new
   end
 
