@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_group, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :ensure_group, only: [:show, :edit, :update, :destroy, :new_mail, :send_mail]
+  before_action :ensure_correct_user, only: [:edit, :update, :new_mail, :send_mail]
 
   def new
     @group = Group.new
@@ -17,7 +17,6 @@ class GroupsController < ApplicationController
   end
 
   def join
-    @group = Group.find(params[:group_id])
     @group.users << current_user
     redirect_to groups_path
   end
@@ -47,6 +46,15 @@ class GroupsController < ApplicationController
   def destroy
     @group.users.delete(current_user)
     redirect_to groups_path
+  end
+
+  def new_mail
+  end
+
+  def send_mail
+    @title = params[:title]
+    @content = params[:content]
+    ContactMailer.send_mail(@title, @content, @group.users, current_user).delivery_method
   end
 
   private
