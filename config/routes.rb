@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     resources :book_comments, only: [:create, :destroy]
   end
   get 'search' => 'searches#search'
-  resources :groups, only: [:index, :show, :edit, :create, :update, :new]
+  resources :groups do
+    get 'join' => 'groups#join'
+  end
 end
