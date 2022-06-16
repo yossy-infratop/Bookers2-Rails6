@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!,except: [:top, :about]
-
   #devise利用の機能が使われるとき、その前にconfig_..._tersが実行される
   before_action :configure_permitted_parameters, if: :devise_controller?
 

@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
   before_action :ensure_book, only: [:show, :edit, :update, :destroy]
   before_action :check_book_user, only: [:edit, :update, :destroy]
 
