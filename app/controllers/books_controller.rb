@@ -4,7 +4,6 @@ class BooksController < ApplicationController
   before_action :check_book_user, only: [:edit, :update, :destroy]
 
   def index
-    @user = current_user
     to  = Time.current.at_end_of_day
     from  = (to - 6.day).at_beginning_of_day
     @books = Book.includes(:favorited_users).
@@ -27,7 +26,6 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id), notice: "You have created book successfully"
     else
       @books = Book.all
-      @user = current_user
       render :index
     end
   end

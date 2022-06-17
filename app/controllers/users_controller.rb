@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_action :check_user, only: [:edit, :update]
 
   def index
-    @user = current_user
     @users = User.all
     @book = Book.new
   end
