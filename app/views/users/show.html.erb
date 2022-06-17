@@ -30,6 +30,16 @@
       <h2>投稿数の前日比・前週比</h2>
       <%= render 'books/post_count', obj: "d", this_book: @today_book, last_book: @yesterday_book %>
       <%= render 'books/post_count', obj: "w", this_book: @this_week_book, last_book: @last_week_book %>
+      <%= form_with url: user_search_path(@user), method: :get, local: false do |f| %>
+        <%= f.date_field :created_at %>
+        <%= f.submit '検索', class: 'btn btn-primary'  %>
+      <% end %>
+
+      <div id="search_result">
+        <% if @search_book.present? %>
+          <%= render 'books/search', search_book: @search_book %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
