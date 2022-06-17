@@ -4,8 +4,8 @@ class Group < ApplicationRecord
 
   has_one_attached :image
 
-  validates :name, uniqueness: true, length: { in: 2..20 }
-  validates :introduction, length: { maximum: 50 }
+  validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
+  validates :introduction, presence: true, length: { maximum: 50 }
 
   def get_image(width, height)
     unless image.attached?

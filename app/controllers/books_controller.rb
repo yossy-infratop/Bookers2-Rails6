@@ -33,7 +33,16 @@ class BooksController < ApplicationController
   end
 
   def update
+    tag_list = params[:book][:tag_name].split(',')
     if @book.update(book_params.except(:rate))
+      # book.idに紐づいていたタグを@oldに入れる
+      @old_relations = BookTag.where(book_id: @book.id)
+      # それらを取り出して削除
+      @old_relations.each do |relation|
+        relation.delete
+      end
+      # 再度タグを保存
+      @book.save_tag(tag_list)
       redirect_to book_path(@book.id), notice: "You have updated book successfully"
     else
       render :edit
@@ -46,13 +55,7 @@ class BooksController < ApplicationController
   end
 
   def sort
-    if params[:sort] == "created_at"
-      @books = Book.includes(:user).order(created_at: :desc)
-    elsif params[:sort] == "rate"
-      @books = Book.includes(:user).order(rate: :desc)
-    else
-      @books = Book.includes(:user)
-    end
+    @books = Book.sort(Book.includes(:user), params[:sort])
   end
 
   private

@@ -9,18 +9,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @books = @user.books
-    @book_count = [@books.where(created_at: Time.zone.now.all_day).count]
-    @days = ["今日"]
-    for num in 1..6 do
-      @book_count.push(@books.where(created_at: num.day.ago.all_day).count)
-      @days.push("#{num}日前")
-    end
-    @today_book =  @books.created_today
-    @yesterday_book = @books.created_yesterday
-    @this_week_book = @books.created_this_week
-    @last_week_book = @books.created_last_week
+    @books = @user.books.includes(:user)
     @book = Book.new
+    # 8a : DM機能
     if @user != current_user
       Entry.where(user_id: current_user.id).each do |cu|
         Entry.where(user_id: @user.id).each do |u|
@@ -34,6 +25,18 @@ class UsersController < ApplicationController
         @room = Room.new
         @entry = Entry.new
       end
+    end
+    # 7b : 昨日、今日、先週、今週の投稿数
+    @today_book =  @books.created_today
+    @yesterday_book = @books.created_yesterday
+    @this_week_book = @books.created_this_week
+    @last_week_book = @books.created_last_week
+    # 8b : 過去7日分のそれぞれの投稿数
+    @book_count = [@today_book.count]
+    @days = ["今日"]
+    for num in 1..6 do
+      @book_count.push(@books.where(created_at: num.day.ago.all_day).count)
+      @days.push("#{num}日前")
     end
   end
 

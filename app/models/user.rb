@@ -15,7 +15,6 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
 
   has_many :group_users
-
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
 
@@ -26,11 +25,11 @@ class User < ApplicationRecord
     if method == 'perfect'
       User.where(name: content)
     elsif method == 'forward'
-      User.where('name LIKE ?', '#{content}%')
+      User.where('name LIKE ?', "#{content}%")
     elsif method == 'backward'
-      User.where('name LIKE ?', '%#{content}')
+      User.where('name LIKE ?', "%#{content}")
     else
-      User.where('name LIKE ?', '%#{content}%')
+      User.where('name LIKE ?', "%#{content}%")
     end
   end
 

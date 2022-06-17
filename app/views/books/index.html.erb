@@ -13,7 +13,13 @@
     <!-- 右側 -->
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
-      <div><%= link_to "新しい順", books_sort_path(sort: "created_at"), remote: true %> | <%= link_to "評価の高い順", books_sort_path(sort: "rate"), remote: true %></div>
+      <div>
+        <%= link_to "新しい順", books_sort_path(sort: "created_at"), remote: true %> |
+        <%= link_to "いいねの多い順(1週間)", books_sort_path(sort: "favorite"), remote: true %> |
+        <%= link_to "コメントの多い順", books_sort_path(sort: "comment"), remote: true %> |
+        <%= link_to "評価の高い順", books_sort_path(sort: "rate"), remote: true %> |
+        <%= link_to "閲覧数順", books_sort_path(sort: "impress"), remote: true %>
+      </div>
       <div class="book_index">
         <%= render 'books/index', books: @books %>
       </div>

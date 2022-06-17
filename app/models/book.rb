@@ -14,18 +14,36 @@ class Book < ApplicationRecord
   scope :created_this_week, -> { where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day) }
   scope :created_last_week, -> { where(created_at: 2.week.ago.beginning_of_day..1.week.ago.end_of_day) }
 
-  # bookモデルでimpressionableを使用できるようになる
+  # bookモデルでimpressionableを使用できるようになる : 9a : PV数
   is_impressionable
 
   def self.search_for(content, method)
     if method == 'perfect'
       Book.where(title: content)
     elsif method == 'forward'
-      Book.where('title LIKE ?', '#{content}%')
+      Book.where('title LIKE ?', "#{content}%")
     elsif method == 'backward'
-      Book.where('title LIKE ?', '%#{content}')
+      Book.where('title LIKE ?', "%#{content}")
     else
-      Book.where('title LIKE ?', '%#{content}%')
+      Book.where('title LIKE ?', "%#{content}%")
+    end
+  end
+
+  def self.sort(books, sort)
+    if sort == "created_at"
+      books.order(created_at: :desc)
+    elsif sort == "favorite"
+      to  = Time.current.at_end_of_day
+      from  = (to - 6.day).at_beginning_of_day
+      books.sort {|a, b| b.favorites.where(created_at: from...to).size <=> a.favorites.where(created_at: from...to).size}
+    elsif sort == "comment"
+      books.sort {|a, b| b.book_comments.size <=> a.book_comments.size}
+    elsif sort == "rate"
+      books.includes(:user).order(rate: :desc)
+    elsif sort == "impress"
+      books.sort {|a, b| b.impressionist_count <=> a.impressionist_count}
+    else
+      books
     end
   end
 

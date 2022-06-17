@@ -17,6 +17,7 @@ end
 Tag.create!(
   name: "test"
 )
+
 for n in 1..3 do
   Book.create!(
     title: "test#{n}",

@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_group, only: [:show, :edit, :update, :destroy, :new_mail, :send_mail]
+  before_action :ensure_group, only: [:show, :join, :edit, :update, :destroy, :new_mail, :send_mail]
   before_action :ensure_correct_user, only: [:edit, :update, :new_mail, :send_mail]
 
   def new
@@ -8,11 +8,12 @@ class GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all
+    @groups = Group.includes(:users)
     @book = Book.new
   end
 
   def show
+    @owner = User.find(@group.owner_id)
     @book = Book.new
   end
 

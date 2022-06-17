@@ -2,6 +2,8 @@
 <% if @books %>
   <h3>Books search for "<%= @tag.name %>"</h3>
   <%= render 'books/index', books: @books %>
+<% elsif @tag == "タグを入力してください" %>
+  <h3><%= @tag %></h3>
 <% else %>
-  <h3>No searched Books for tag</h3>
+  <h3>Not Books search for "<%= @tag %>"</h3>
 <% end %>
