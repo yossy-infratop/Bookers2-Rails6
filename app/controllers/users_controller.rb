@@ -5,12 +5,12 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @new_book = Book.new
+    @book = Book.new
   end
 
   def show
     @books = @user.books
-    @new_book = Book.new
+    @book = Book.new
   end
 
   def edit
