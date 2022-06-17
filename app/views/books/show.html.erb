@@ -1,5 +1,5 @@
 <%= render 'searches/form' %>
-<div class="container">
+<div class="container px-5 px-sm-0">
   <div class="row">
     <!-- 左側 -->
     <div class="col-md-3">
@@ -35,6 +35,9 @@
               <%= render 'book_comments/counter', book: @book %>
             </td>
             <td><%= render 'books/star', book: @book %></td>
+            <td>
+              閲覧数<%= @book.impressionist_count %>
+            </td>
             <% if @book.user == current_user %>
               <td><%= link_to "Edit", edit_book_path(@book), class: 'btn btn-sm btn-success' %></td>
               <td><%= link_to "Destroy", book_path(@book), data: { confirm: '本当に消しますか？'}, method: :delete, class:'btn btn-sm btn-danger' %></td>

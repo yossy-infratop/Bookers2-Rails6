@@ -1,0 +1,77 @@
+[33mcommit 1781a6965c64791f0071f850d1e87de01bb18492[m[33m ([m[1;36mHEAD -> [m[1;32m8b[m[33m, [m[1;31morigin/8b[m[33m)[m
+Author: yossy <yoshikawa.akito.infratop@gmail.com>
+Date:   Wed Jun 15 14:15:18 2022 +0000
+
+    8b
+
+[33mcommit acbb6960a1144406ef1a30a81050cea8164d783b[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: yossy <yoshikawa.akito.infratop@gmail.com>
+Date:   Sat Jun 11 15:36:11 2022 +0000
+
+    refactored
+
+[33mcommit 7bc076adb14ecb9ff52112d4d4543e4cb573376f[m
+Author: EC2 Default User <ec2-user@ip-172-31-7-132.ap-northeast-1.compute.internal>
+Date:   Fri Jun 10 05:05:51 2022 +0000
+
+    serches
+
+[33mcommit 6520299437998a86e1714360afc41a7f77cc5aa3[m
+Author: EC2 Default User <ec2-user@ip-172-31-46-237.ec2.internal>
+Date:   Fri May 6 08:04:53 2022 +0000
+
+    remote
+
+[33mcommit 1cea4b50b6c6aaf0571081ce21132a68b5eb0341[m
+Author: EC2 Default User <ec2-user@ip-172-31-46-237.ec2.internal>
+Date:   Fri May 6 07:56:14 2022 +0000
+
+    remote
+
+[33mcommit a07c34dd528ec9982518ff742079b5ac054370ea[m
+Author: EC2 Default User <ec2-user@ip-172-31-46-237.ec2.internal>
+Date:   Fri May 6 06:16:11 2022 +0000
+
+    Add comment
+
+[33mcommit 2096b30b8ad391f220244158122d625127db9984[m
+Author: EC2 Default User <ec2-user@ip-172-31-46-237.ec2.internal>
+Date:   Fri May 6 05:52:22 2022 +0000
+
+    Add favorite
+
+[33mcommit a30c9f51e3a17e7406af4dad280ad7c41f4cca28[m
+Author: EC2 Default User <ec2-user@ip-172-31-46-237.ec2.internal>
+Date:   Fri May 6 05:51:07 2022 +0000
+
+    Add favorite
+
+[33mcommit da9ab47b562046f51cd541e9d031b8a4c0846cc6[m
+Author: EC2 Default User <ec2-user@ip-172-31-46-237.ec2.internal>
+Date:   Tue May 3 08:19:44 2022 +0000
+
+    End of basic part
+
+[33mcommit 4b48b36f91bb5f6c7fd8d82d82b3e9464c00da6d[m
+Author: EC2 Default User <ec2-user@ip-172-31-46-237.ec2.internal>
+Date:   Tue May 3 07:33:16 2022 +0000
+
+    Maiking views
+
+[33mcommit 2bfa7bbbf39b3df67c0d8311c4d598800f0e6762[m
+Author: EC2 Default User <ec2-user@ip-172-31-46-237.ec2.internal>
+Date:   Tue May 3 05:30:55 2022 +0000
+
+    File settings
+
+[33mcommit d34e2271d6786a5a7725b73124ad34417886d9fa[m
+Author: EC2 Default User <ec2-user@ip-172-31-46-237.ec2.internal>
+Date:   Tue May 3 05:19:04 2022 +0000
+
+    Preparation of necessary files
+
+[33mcommit 4f6244d74b9dce3f73cbaf58fdc9037c06c861c0[m
+Author: EC2 Default User <ec2-user@ip-172-31-46-237.ec2.internal>
+Date:   Tue May 3 04:58:06 2022 +0000
+
+    first commit

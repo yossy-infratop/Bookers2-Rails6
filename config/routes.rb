@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   devise_for :users
   root to: 'homes#top'
   get 'home/about' => 'homes#about', as: 'about'
@@ -7,11 +8,18 @@ Rails.application.routes.draw do
   	get 'followings' => 'relationships#followings', as: 'followings'
   	get 'followers' => 'relationships#followers', as: 'followers'
   end
+  get 'users/:id/search' => 'users#search', as: 'user_search'
   get 'books/sort' => 'books#sort'
   resources :books, only:[:index, :show, :edit, :create, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
+  resources :groups
+  get ':id/join' => 'groups#join', as: 'group_join'
+  get ':id/new_mail' => 'groups#new_mail', as: 'group_new_mail'
+  get ':id/send_mail' => 'groups#send_mail', as: 'group_send_mail'
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :show]
   get 'search' => 'searches#search'
   get 'search_tag' => 'searches#search_tag'
 end

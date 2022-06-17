@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_book, only: [:show, :edit, :update, :destroy]
   before_action :check_book_user, only: [:edit, :update, :destroy]
+  impressionist :actions => [:show]
 
   def index
     @books = Book.includes(:user)
@@ -12,6 +13,8 @@ class BooksController < ApplicationController
     @user = @book.user
     @new_book = Book.new
     @book_comment = BookComment.new
+    # 詳細ページにアクセスするとPV数が1つ増える
+    impressionist(@book, nil, unique: [:ip_address])
   end
 
   def create

@@ -8,6 +8,7 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -30,6 +31,7 @@
         </td>
         <td><%= render 'book_comments/counter', book: book %></td>
         <td><%= render 'books/star', book: book %></td>
+        <td>閲覧数<%= book.impressionist_count %></td>
       </tr>
     <% end %>
   </tbody>
