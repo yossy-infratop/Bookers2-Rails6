@@ -13,4 +13,5 @@ class SearchesController < ApplicationController
       redirect_to request.referer
     end
   end
+
 end

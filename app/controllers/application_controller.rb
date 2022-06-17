@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   #ログイン後、マイページに移動
   def after_sign_in_path_for(resource)
-    user_path(current_user.id)
+    user_path(resource)
   end
 
   #protected:呼び出された他のコントローラーからも参照できる
@@ -14,4 +14,5 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
   end
+
 end

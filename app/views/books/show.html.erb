@@ -1,9 +1,10 @@
+<%= render 'searches/form' %>
 <div class="container">
   <div class="row">
     <!-- 左側 -->
     <div class="col-md-3">
       <h2>User info</h2>
-      <%= render 'users/info', user: @book.user %>
+      <%= render 'users/info', user: @user %>
       <h2 class="mt-3">New book</h2>
       <%= render 'books/form', book: @new_book %>
     </div>
@@ -15,9 +16,9 @@
         <tbody>
           <tr>
             <td>
-              <%= link_to user_path(@book.user) do %>
-                <%= image_tag @book.user.get_profile_image(50, 50) %><br>
-                <%= @book.user.name %>
+              <%= link_to user_path(@user) do %>
+                <%= image_tag @user.get_profile_image(50, 50) %><br>
+                <%= @user.name %>
               <% end %>
             </td>
             <td><%= link_to @book.title, book_path(@book) %></td>
