@@ -30,9 +30,7 @@ class BooksController < ApplicationController
   end
 
   def update
-    tag_list = params[:book][:tag_name].split(',')
     if @book.update(book_params.except(:rate))
-      @book.save_tag(tag_list)
       redirect_to book_path(@book.id), notice: "You have updated book successfully"
     else
       render :edit
