@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :ensure_user, only: [:show, :edit, :update]
   before_action :check_user, only: [:edit, :update]
 
   def index
     @users = User.all
-    @new_book = Book.new
+    @book = Book.new
   end
 
   def show
     @books = @user.books
-    @new_book = Book.new
+    @book = Book.new
     if @user != current_user
       Entry.where(user_id: current_user.id).each do |cu|
         Entry.where(user_id: @user.id).each do |u|
