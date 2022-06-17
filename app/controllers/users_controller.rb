@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :ensure_user, only: [:show, :edit, :update]
   before_action :check_user, only: [:edit, :update]
 
   def index
     @users = User.all
-    @new_book = Book.new
+    @book = Book.new
   end
 
   def show
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
     @yesterday_book = @books.created_yesterday
     @this_week_book = @books.created_this_week
     @last_week_book = @books.created_last_week
-    @new_book = Book.new
+    @book = Book.new
   end
 
   def edit

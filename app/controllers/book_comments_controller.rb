@@ -1,4 +1,5 @@
 class BookCommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     book = Book.find(params[:book_id])
@@ -17,4 +18,5 @@ class BookCommentsController < ApplicationController
   def book_comment_params
     params.require(:book_comment).permit(:body)
   end
+
 end
