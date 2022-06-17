@@ -19,7 +19,9 @@ class BooksController < ApplicationController
 
   def create
     @book = current_user.books.new(book_params)
+    tag_list = params[:book][:tag_name].split(',')
     if @book.save
+      @book.save_tag(tag_list)
       redirect_to book_path(@book.id), notice: "You have created book successfully"
     else
       @books = Book.all
@@ -31,7 +33,7 @@ class BooksController < ApplicationController
   end
 
   def update
-    if @book.update(book_params)
+    if @book.update(book_params.except(:rate))
       redirect_to book_path(@book.id), notice: "You have updated book successfully"
     else
       render :edit
@@ -43,10 +45,20 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def sort
+    if params[:sort] == "created_at"
+      @books = Book.includes(:user).order(created_at: :desc)
+    elsif params[:sort] == "rate"
+      @books = Book.includes(:user).order(rate: :desc)
+    else
+      @books = Book.includes(:user)
+    end
+  end
+
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :rate)
   end
 
   def ensure_book

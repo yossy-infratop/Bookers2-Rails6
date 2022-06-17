@@ -1,0 +1,7 @@
+<%= render 'searches/form' %>
+<% if @books %>
+  <h3>Books search for "<%= @tag.name %>"</h3>
+  <%= render 'books/index', books: @books %>
+<% else %>
+  <h3>No searched Books for tag</h3>
+<% end %>

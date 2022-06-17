@@ -8,6 +8,30 @@
     <%= f.text_area :body, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.submit class: "btn btn-success" %>
+    <%= f.label "Tag (,で区切ると複数タグ登録できます)" %>
+    <%= f.text_field :tag_name, value: book.tags.pluck(:name).join(','), class:"form-control"%>
+  </div>
+  <% if submit == 'Create Book' %>
+    <div class="form-group" id="star">
+      <%= f.label :rate, "rate" %>
+      <%= f.hidden_field :rate, id: :"review_star" %>
+    </div>
+    <script>
+      $('#star').raty({
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        scoreName: 'book[rate]',
+        half: true,
+      });
+    </script>
+  <% else %>
+    <div class="form-group">
+      <%= render 'books/star', book: book %>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.submit submit, class: "btn btn-success" %>
   </div>
 <% end %>

@@ -7,13 +7,16 @@
       <h2>User info</h2>
       <%= render 'users/info', user: current_user %>
       <h2 class="mt-3">New book</h2>
-      <%= render 'books/form', book: @book %>
+      <%= render 'books/form', book: @book, submit: 'Create Book' %>
     </div>
 
     <!-- 右側 -->
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
-      <%= render 'books/index', books: @books %>
+      <div><%= link_to "新しい順", books_sort_path(sort: "created_at"), remote: true %> | <%= link_to "評価の高い順", books_sort_path(sort: "rate"), remote: true %></div>
+      <div class="book_index">
+        <%= render 'books/index', books: @books %>
+      </div>
     </div>
   </div>
 </div>

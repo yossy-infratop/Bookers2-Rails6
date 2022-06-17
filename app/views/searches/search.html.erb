@@ -1,3 +1,4 @@
+<%= render 'searches/form' %>
 <% if @model == 'user' %>
 	<h3>Users search for "<%= @content %>"</h3>
   <%= render 'users/index', users: @records %>
