@@ -7,6 +7,10 @@
     <%= f.label :book_opinion, "Opinion" %>
     <%= f.text_area :body, class: "form-control" %>
   </div>
+  <div class="form-group">
+    <%= f.label "Tag (,で区切ると複数タグ登録できます)" %>
+    <%= f.text_field :tag_name, value: book.tags.pluck(:name).join(','), class:"form-control"%>
+  </div>
   <% if submit == 'Create Book' %>
     <div class="form-group" id="star">
       <%= f.label :rate, "rate" %>

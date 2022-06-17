@@ -5,6 +5,10 @@
       <%= f.select :model, options_for_select({ "User" => "user", "Book" => "book" }) %>
       <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
       <%= f.submit '検索' %>
+    <% end %>&emsp;
+    <%= form_with url: search_tag_path, method: :get, local: true do |f| %>
+      <%= f.text_field :tag_name %>
+      <%= f.submit 'タグ検索' %>
     <% end %>
   <% end %>
 </div>

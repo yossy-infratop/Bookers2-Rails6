@@ -13,4 +13,5 @@ Rails.application.routes.draw do
     resources :book_comments, only: [:create, :destroy]
   end
   get 'search' => 'searches#search'
+  get 'search_tag' => 'searches#search_tag'
 end

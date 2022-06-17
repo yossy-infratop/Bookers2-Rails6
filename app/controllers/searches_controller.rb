@@ -14,4 +14,15 @@ class SearchesController < ApplicationController
     end
   end
 
+  def search_tag
+    if params[:tag_id]
+      @tag = Tag.find(params[:tag_id])
+    elsif params[:tag_name]
+      @tag = Tag.find_by(name: params[:tag_name])
+    end
+    if @tag
+      @books = @tag.books.includes(:user)
+    end
+  end
+
 end

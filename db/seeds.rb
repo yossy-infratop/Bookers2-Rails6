@@ -14,15 +14,18 @@ for n in 1..3 do
   )
 end
 
-now = Time.current
-
+Tag.create!(
+  name: "test"
+)
 for n in 1..3 do
   Book.create!(
     title: "test#{n}",
     body: "test#{n}",
     user_id: User.first.id,
-    rate: n,
-    created_at: now,
-    updated_at: now
+    rate: n
+  )
+  BookTag.create!(
+    book_id: n,
+    tag_id: 1
   )
 end
