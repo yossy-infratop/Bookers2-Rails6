@@ -16,7 +16,25 @@ class UsersController < ApplicationController
       @book_count.push(@books.where(created_at: num.day.ago.all_day).count)
       @days.push("#{num}日前")
     end
+    @today_book =  @books.created_today
+    @yesterday_book = @books.created_yesterday
+    @this_week_book = @books.created_this_week
+    @last_week_book = @books.created_last_week
     @book = Book.new
+    if @user != current_user
+      Entry.where(user_id: current_user.id).each do |cu|
+        Entry.where(user_id: @user.id).each do |u|
+          if cu.room_id == u.room_id
+            @is_room = true
+            @room_id = cu.room_id
+          end
+        end
+      end
+      unless @is_room
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
 
   def edit
