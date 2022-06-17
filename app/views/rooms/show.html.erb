@@ -1,0 +1,22 @@
+<h2><%= @another_user.name %>さんとのチャット</h2>
+
+<p id="alert"><%= alert %></p>
+<table>
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td>
+          <%= message.user.name %>
+        </td>
+        <td>
+          <%= message.message %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= form_with model: @message, url: messages_path, method: :post do |f| %>
+  <%= f.text_field :message %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+<% end %>

@@ -1,0 +1,57 @@
+<canvas id="myChart"></canvas>
+<script>
+  $(document).on('turbolinks:load', function() {
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+      /* グラフの種類 (bar、line、rader、pie、doughnut、polarArea、bubble などがある) */
+      type: "line",
+      data: {
+        // raw: HTMLの特殊文字のエスケープ
+        labels: <%= raw days.reverse %>,
+        /* データの設定 */
+        datasets: [
+          {
+            /* グラフ全体のラベル */
+            label: "投稿した本の数",
+            data: <%= book_count.reverse %>,
+            /* グラフを塗りつぶすかどうか（falseにすると枠線だけのグラフになる）*/
+            fill: false,
+            /* 背景色 */
+            /*backgroundColor: "rgba(255, 99, 132, 0.2)",*/
+            /* 枠線色 */
+            borderColor: "rgb(30, 144, 255)",
+            /* ポイントを塗りつぶす色 */
+            pointBackgroundColor: "rgb(30, 144, 255)",
+            /* ポイントの枠線色 */
+            pointBorderColor: "#fff",
+            /* ホバー時のポイントの背景色 */
+            // pointHoverBackgroundColor: "#fff",
+            /* ホバー時のポイントの枠線色 */
+            // pointHoverBorderColor: "rgb(30, 144, 255)",
+          },
+        ],
+      },
+      //オプションの設定
+      options: {
+        animation: false,
+        plugins: {
+          title: {
+            display: true,
+            text: "7日間の投稿数の比較",
+            color: "rgb(0, 0, 0)",
+            font: {
+              size: 30
+            }
+          }
+        },
+        scales: {
+          y: {
+            max: 6,
+            min: 0,
+            padding: 1
+          }
+        }
+      },
+    });
+  });
+</script>
