@@ -1,4 +1,5 @@
 class SearchesController < ApplicationController
+  before_action :authenticate_user!
   def search
     @model = params[:model]
     @content = params[:content]
@@ -11,4 +12,5 @@ class SearchesController < ApplicationController
       redirect_to request.referer
     end
   end
+
 end

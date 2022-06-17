@@ -1,14 +1,16 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
   before_action :ensure_book, only: [:show, :edit, :update, :destroy]
   before_action :check_book_user, only: [:edit, :update, :destroy]
   impressionist :actions => [:show]
 
   def index
     @books = Book.all
-    @new_book = Book.new
+    @book = Book.new
   end
 
   def show
+    @user = @book.user
     @new_book = Book.new
     @book_comment = BookComment.new
     # 詳細ページにアクセスするとPV数が1つ増える
@@ -21,7 +23,6 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id), notice: "You have created book successfully"
     else
       @books = Book.all
-      @new_book = @book
       render :index
     end
   end
