@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2022_05_06_063648) do
     t.string "title", null: false
     t.string "body", null: false
     t.string "user_id", null: false
+    t.float "rate", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

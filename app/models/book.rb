@@ -5,6 +5,7 @@ class Book < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
+  validates :rate, presence: true, length: { maximum: 5 }
 
   def self.search_for(content, method)
     if method == 'perfect'

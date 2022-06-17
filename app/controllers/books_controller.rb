@@ -28,7 +28,7 @@ class BooksController < ApplicationController
   end
 
   def update
-    if @book.update(book_params)
+    if @book.update(book_params.except(:rate))
       redirect_to book_path(@book.id), notice: "You have updated book successfully"
     else
       render :edit
@@ -43,7 +43,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :rate)
   end
 
   def ensure_book

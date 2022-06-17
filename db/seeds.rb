@@ -21,6 +21,7 @@ for n in 1..3 do
     title: "test#{n}",
     body: "test#{n}",
     user_id: User.first.id,
+    rate: n,
     created_at: now,
     updated_at: now
   )
