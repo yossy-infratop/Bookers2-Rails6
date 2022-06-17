@@ -40,6 +40,16 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def sort
+    if params[:sort] == "created_at"
+      @books = Book.includes(:user).order(created_at: :desc)
+    elsif params[:sort] == "rate"
+      @books = Book.includes(:user).order(rate: :desc)
+    else
+      @books = Book.includes(:user)
+    end
+  end
+
   private
 
   def book_params
