@@ -1,0 +1,21 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+     <th><% if obj == "d" %>今日<% elsif obj == "w" %>今週<% end %>の投稿</th>
+     <th><% if obj == "d" %>昨日<% elsif obj == "w" %>前週<% end %>の投稿</th>
+     <th><% if obj == "d" %>前日比<% elsif obj == "w" %>前週比<% end %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= this_book.count %></td>
+      <td><%= last_book.count %></td>
+      <% if last_book.count == 0 %>
+        <td><% if obj == "d" %>前日<% elsif obj == "w" %>前週<% end %>の投稿はなし</td>
+      <% else %>
+      　<td><% the_day_before =   this_book.count / last_book.count.to_f  %>
+      　<%= (the_day_before * 100).round %>%</td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

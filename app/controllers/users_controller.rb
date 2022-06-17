@@ -10,6 +10,10 @@ class UsersController < ApplicationController
 
   def show
     @books = @user.books
+    @today_book =  @books.created_today
+    @yesterday_book = @books.created_yesterday
+    @this_week_book = @books.created_this_week
+    @last_week_book = @books.created_last_week
     @book = Book.new
     if @user != current_user
       Entry.where(user_id: current_user.id).each do |cu|
