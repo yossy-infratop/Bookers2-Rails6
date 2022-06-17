@@ -5,7 +5,7 @@ class BooksController < ApplicationController
   impressionist :actions => [:show]
 
   def index
-    @books = Book.all
+    @books = Book.includes(:user)
     @book = Book.new
   end
 
