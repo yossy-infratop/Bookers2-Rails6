@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_group, only: [:show, :edit, :update, :destroy, :new_mail, :send_mail]
+  before_action :ensure_group, only: [:show, :join, :edit, :update, :destroy, :new_mail, :send_mail]
   before_action :ensure_correct_user, only: [:edit, :update, :new_mail, :send_mail]
 
   def new
