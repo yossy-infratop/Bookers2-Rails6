@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     if !Favorite.where(book_id: params[:book_id], user_id: current_user.id).exists?

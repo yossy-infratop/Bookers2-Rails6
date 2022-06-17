@@ -29,14 +29,6 @@ class User < ApplicationRecord
     end
   end
 
-  def follow(user)
-    relationships.create(followed_id: user.id)
-  end
-
-  def unfollow(user)
-    relationships.find_by(followed_id: user.id).destroy
-  end
-
   def following?(user)
     followings.include?(user)
   end
@@ -48,4 +40,5 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
+
 end

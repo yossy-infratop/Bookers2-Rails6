@@ -1,15 +1,17 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :ensure_user, only: [:show, :edit, :update]
   before_action :check_user, only: [:edit, :update]
 
   def index
+    @user = current_user
     @users = User.all
-    @new_book = Book.new
+    @book = Book.new
   end
 
   def show
     @books = @user.books
-    @new_book = Book.new
+    @book = Book.new
   end
 
   def edit
