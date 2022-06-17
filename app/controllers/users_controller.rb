@@ -10,6 +10,12 @@ class UsersController < ApplicationController
 
   def show
     @books = @user.books
+    @book_count = [@books.where(created_at: Time.zone.now.all_day).count]
+    @days = ["今日"]
+    for num in 1..6 do
+      @book_count.push(@books.where(created_at: num.day.ago.all_day).count)
+      @days.push("#{num}日前")
+    end
     @today_book =  @books.created_today
     @yesterday_book = @books.created_yesterday
     @this_week_book = @books.created_this_week
