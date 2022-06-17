@@ -4,7 +4,6 @@ class BooksController < ApplicationController
   before_action :check_book_user, only: [:edit, :update, :destroy]
 
   def index
-    @user = current_user
     @books = Book.includes(:user)
     @book = Book.new
   end
