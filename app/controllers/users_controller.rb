@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :ensure_user, only: [:show, :edit, :update]
   before_action :check_user, only: [:edit, :update]
 
   def index
     @users = User.all
-    @new_book = Book.new
+    @book = Book.new
   end
 
   def show
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
       @book_count.push(@books.where(created_at: num.day.ago.all_day).count)
       @days.push("#{num}日前")
     end
-    @new_book = Book.new
+    @book = Book.new
   end
 
   def edit
