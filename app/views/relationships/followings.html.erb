@@ -1,10 +1,6 @@
 <div class='container px-5 px-sm-0'>
   <div class='row d-flex flex-column'>
     <h2>Follow Users</h2>
-    <% if @users.exists? %>
-      <%= render '/users/index', users: @users %>
-    <% else %>
-      <p>ユーザーはいません</p>
-    <% end %>
+    <div class="followings"><%= render "relationships/followings", users: @users %></div>
   </div>
 </div>

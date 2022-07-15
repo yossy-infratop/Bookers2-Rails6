@@ -1,0 +1,11 @@
+<!-- user info-->
+$('.followings-path-<%= @info_user.id %>').html("<%= j(render 'relationships/followings_path', user: @info_user ) %>")
+$('.followers-path-<%= @info_user.id %>').html("<%= j(render 'relationships/followers_path', user: @info_user ) %>")
+$('.info-follow-btn-<%= @info_user.id %>').html("<%= j(render 'relationships/follow_btn', user: @info_user, info: true ) %>")
+$('.chat-room').html("<%= j(render 'rooms/chat', user: @info_user, is_room: @is_room, room: @room, room_id: @room_id ) %>")
+<!--user index-->
+$('.follow-btn-<%= @user.id %>').html("<%= j(render 'relationships/follow_btn', user: @user, info: false ) %>")
+$('.followed-count-<%= current_user.id %>').html("<%= j(render 'relationships/followed_count', user: current_user ) %>")
+$('.follower-count-<%= @user.id %>').html("<%= j(render 'relationships/follower_count', user: @user ) %>")
+<!--フォロー一覧-->
+$('.followings').html("<%= j(render 'relationships/followings', users: @info_user.followings ) %>")

@@ -12,21 +12,7 @@ class UsersController < ApplicationController
   def show
     @books = @user.books.includes(:user)
     @book = Book.new
-    # 8a : DM機能
-    if @user != current_user
-      Entry.where(user_id: current_user.id).each do |cu|
-        Entry.where(user_id: @user.id).each do |u|
-          if cu.room_id == u.room_id
-            @is_room = true
-            @room_id = cu.room_id
-          end
-        end
-      end
-      unless @is_room
-        @room = Room.new
-        @entry = Entry.new
-      end
-    end
+    @is_room, @room_id, @room, @entry = Room.ensure_room(@user, current_user)
     # 7b : 昨日、今日、先週、今週の投稿数
     @today_book =  @books.created_today
     @yesterday_book = @books.created_yesterday
