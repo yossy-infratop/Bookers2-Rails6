@@ -2,8 +2,9 @@ class MessagesController < ApplicationController
 
   def create
     message = current_user.messages.new(message_params)
+    @messages = Room.find(message.room_id).messages
     flash[:alert] = "メッセージ送信に失敗しました。" unless message.save
-    redirect_to room_path(message.room_id)
+    render 'rooms/create'
   end
 
   private

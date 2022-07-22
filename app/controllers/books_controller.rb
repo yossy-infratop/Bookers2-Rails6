@@ -36,9 +36,9 @@ class BooksController < ApplicationController
     tag_list = params[:book][:tag_name].split(',')
     if @book.update(book_params.except(:rate))
       # book.idに紐づいていたタグを@oldに入れる
-      @old_relations = BookTag.where(book_id: @book.id)
+      old_relations = BookTag.where(book_id: @book.id)
       # それらを取り出して削除
-      @old_relations.each do |relation|
+      old_relations.each do |relation|
         relation.delete
       end
       # 再度タグを保存

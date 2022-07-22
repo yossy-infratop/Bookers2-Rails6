@@ -1,0 +1,15 @@
+<p id="alert"><%= alert %></p>
+<table>
+  <tbody>
+    <% messages.each do |message| %>
+      <tr>
+        <td>
+          <%= message.user.name %>
+        </td>
+        <td>
+          <%= message.message %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

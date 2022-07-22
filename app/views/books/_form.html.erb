@@ -15,20 +15,11 @@
     <div class="form-group" id="star">
       <%= f.label :rate, "rate" %>
       <%= f.hidden_field :rate, id: :"review_star" %>
+      <%= render 'books/star', book: book, readonly: false %>
     </div>
-    <script>
-      $('#star').raty({
-        size     : 36,
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-        scoreName: 'book[rate]',
-        half: true,
-      });
-    </script>
   <% else %>
     <div class="form-group">
-      <%= render 'books/star', book: book %>
+      <%= render 'books/star', book: book, readonly: true %>
     </div>
   <% end %>
   <div class="form-group">

@@ -30,7 +30,7 @@
           <%= render 'favorites/favorite', book: book, user: current_user %>
         </td>
         <td><%= render 'book_comments/counter', book: book %></td>
-        <td><%= render 'books/star', book: book %></td>
+        <td><%= render 'books/star', book: book, readonly: true %></td>
         <td>閲覧数<%= book.impressionist_count %></td>
       </tr>
     <% end %>
