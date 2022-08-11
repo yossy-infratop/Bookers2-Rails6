@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4'
@@ -55,5 +55,14 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem "net-smtp"
+
 gem 'devise'
 gem 'impressionist'
+
+# 都道府県コードから都道府県名を変換するgem
+gem 'jp_prefecture'
+
+#住所から経度緯度を取得
+gem "geocoder"
+gem "dotenv-rails"

@@ -20,6 +20,13 @@ class User < ApplicationRecord
 
   validates :name, uniqueness: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }
+  validates :postal_code, presence: true
+  validates :prefecture_code, presence: true
+  validates :city, presence: true
+  validates :street, presence: true
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   def self.search_for(content, method)
     if method == 'perfect'

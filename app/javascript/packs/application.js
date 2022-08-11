@@ -17,6 +17,7 @@ import "@fortawesome/fontawesome-free/js/all";
 import Chart from "chart.js/auto";
 global.Chart = Chart;
 import "packs/raty";
+import "packs/jquery.jpostal.js";
 
 Rails.start();
 Turbolinks.start();

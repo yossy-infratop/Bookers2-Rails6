@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   #データ操作を許可するアクションメソッドを指定
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :postal_code, :prefecture_code, :city, :street, :other_address, :address])
   end
 
 end

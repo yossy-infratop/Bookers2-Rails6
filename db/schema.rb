@@ -150,6 +150,14 @@ ActiveRecord::Schema.define(version: 2022_06_17_084204) do
     t.string "encrypted_password", default: "", null: false
     t.string "name", null: false
     t.text "introduction"
+    t.string "postal_code", null: false
+    t.string "prefecture_code", null: false
+    t.string "city", null: false
+    t.string "street", null: false
+    t.string "other_address"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

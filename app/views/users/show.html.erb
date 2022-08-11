@@ -44,4 +44,9 @@
       </div>
     </div>
   </div>
+  <% if @user == current_user %>
+    <div class="row">
+      <%= render 'map', user: @user %>
+    </div>
+  <% end %>
 </div>
