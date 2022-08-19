@@ -50,6 +50,12 @@ class User < ApplicationRecord
       # SecureRandom.urlsafe_base64: ランダムな文字列を生成
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
+      user.postal_code = "1066223"
+      user.prefecture_code = "東京都"
+      user.city = "港区六本木"
+      user.street = "3-2-1"
+      user.other_address = "住友不動産六本木グランドタワー23F"
+      user.address = "東京都港区六本木3-2-1 住友不動産グランドタワー23F"
     end
   end
 
