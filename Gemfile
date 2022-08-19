@@ -58,6 +58,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "net-smtp"
 
 gem 'devise'
+gem 'devise-i18n'
 gem 'impressionist'
 
 # 都道府県コードから都道府県名を変換するgem

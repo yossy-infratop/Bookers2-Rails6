@@ -76,5 +76,19 @@ Rails.application.configure do
   config.active_job.queue_adapter = :inline
   config.hosts << "a0239be426914960ad41fb23f0c3ddd9.vfs.cloud9.us-east-1.amazonaws.com"
   config.hosts << "66392d43a1324382a245e2c031885a42.vfs.cloud9.ap-northeast-1.amazonaws.com"
-  config.action_mailer.delivery_method = :letter_opener_web
+  #config.action_mailer.delivery_method = :letter_opener_web
+
+  config.action_mailer.perform_caching = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { protocol: 'https', host: 'https://66392d43a1324382a245e2c031885a42.vfs.cloud9.ap-northeast-1.amazonaws.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => 'smtp.gmail.com',
+    :user_name => ENV["GOOGLE_MAIL_ADDRESS"],
+    :password => ENV["GOOGLE_MAILER_PASSWORD"],
+    :authentication => 'login'
+  }
 end
