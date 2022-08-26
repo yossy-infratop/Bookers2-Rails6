@@ -15,8 +15,8 @@
     <% books.each do |book| %>
       <tr>
         <td>
-          <%= link_to user_path(book.user) do %>
-            <%= image_tag book.user.get_profile_image(50, 50) %>
+          <%= link_to book.item_url, target: :_blank, rel: "noopener noreferrer" do %>
+            <%= image_tag book.image_url %>
           <% end %>
         </td>
         <td><%= link_to book.title, book_path(book) %></td>

@@ -61,9 +61,13 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'impressionist'
 
+gem 'kaminari','~> 1.2.1'
+
 # 都道府県コードから都道府県名を変換するgem
 gem 'jp_prefecture'
 
 #住所から経度緯度を取得
 gem "geocoder"
 gem "dotenv-rails"
+
+gem 'rakuten_web_service'

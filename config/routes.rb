@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
   get 'users/:id/search' => 'users#search', as: 'user_search'
   get 'books/sort' => 'books#sort'
+  get 'books/new' => redirect("books")
+  post 'books/new' => 'books#new', as: 'new_books'
   resources :books, only:[:index, :show, :edit, :create, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]

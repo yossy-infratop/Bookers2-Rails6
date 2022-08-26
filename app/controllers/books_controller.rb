@@ -17,15 +17,28 @@ class BooksController < ApplicationController
     impressionist(@book, nil, unique: [:ip_address])
   end
 
+  def new
+    @book = Book.new(book_params)
+    @books = RakutenWebService::Books::Book.search(title: @book.title)
+  end
+
   def create
     @book = current_user.books.new(book_params)
     tag_list = params[:book][:tag_name].split(',')
-    if @book.save
-      @book.save_tag(tag_list)
-      redirect_to book_path(@book.id), notice: "You have created book successfully"
+    if params[:book][:isbn]
+      select_book = RakutenWebService::Books::Book.search(isbn: params[:book][:isbn]).first
+      @book.title = select_book.title
+      @book.image_url = select_book.medium_image_url
+      @book.item_url = select_book.item_url
+      if @book.save
+        @book.save_tag(tag_list)
+        redirect_to book_path(@book.id), notice: "You have created book successfully"
+      else
+        @books = Book.all
+        render :index
+      end
     else
-      @books = Book.all
-      render :index
+      redirect_to books_path
     end
   end
 

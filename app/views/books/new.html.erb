@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>Create Book</h1>
+      <%= form_with model: @book, url: books_path, method: :post, local: true do |f| %>
+
+        <div class="form-group">
+          <table class="table-auto">
+            <tbody>
+              <% @books.each do |book| %>
+                <tr>
+                  <td><%= f.radio_button :isbn, book.isbn %></td>
+                  <td>
+                    <%= link_to book.item_url, target: :_blank, rel: "noopener noreferrer" do %>
+                      <%= image_tag book.medium_image_url %>
+                    <% end %>
+                  </td>
+                  <td><%= book.title %></td>
+                  <td><%= book.author %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :body, "Opinion" %>
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :tag_name, "Tag (,で区切ると複数タグ登録できます)" %>
+          <%= f.text_field :tag_name, value: params[:book][:tag_name], class:"form-control"%>
+        </div>
+
+        <div class="form-group" id="star">
+          <%= f.label :rate, "rate" %>
+          <%= f.hidden_field :rate, id: :"review_star" %>
+          <%= render 'books/star', book: @book, readonly: false %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit 'Create Book', class: "btn btn-success" %>
+        </div>
+
+      <% end %>
+
+      <%= link_to "Back", books_path %>
+    </div>
+  </div>
+</div>

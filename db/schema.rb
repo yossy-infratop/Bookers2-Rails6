@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2022_06_17_084204) do
     t.string "body", null: false
     t.string "user_id", null: false
     t.float "rate", default: 0.0, null: false
+    t.string "image_url", null: false
+    t.string "item_url", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
